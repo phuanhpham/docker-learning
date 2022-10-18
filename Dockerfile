@@ -1,9 +1,12 @@
-FROM node:16.17.0-alpine
+FROM python:3.6-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
+
+# ENV 
+# ENV PORT 5555
 
 COPY . .
 
-RUN npm install
+RUN pip install -r requirements.txt
 
-CMD ["npm", "run", "dev"]
+CMD ["python", "app.py"]

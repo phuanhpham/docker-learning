@@ -1,8 +1,10 @@
-version: '3.7'
+version: "3.4"
 
 services:
   app:
-    image: docker-node/node:v1    
-    restart: unless-stopped
+    image: python-docker/python:v1
     ports:
-     - 3000:3000
+      - "${PUBLIC_PORT}:${PORT}"
+    restart: unless-stopped
+    environment:
+      PORT: ${PORT}
