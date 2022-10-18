@@ -1,8 +1,0 @@
-version: '3.7'
-
-services:
-  app:
-    image: docker-node/node:v1    
-    restart: unless-stopped
-    ports:
-     - 3000:3000
