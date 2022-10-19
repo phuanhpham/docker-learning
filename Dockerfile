@@ -1,14 +1,11 @@
-# build stage
-FROM node:13-alpine as build-stage
-WORKDIR /app
+# Set master image
+FROM php:7.2-fpm-alpine
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Install PHP Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Copy existing application directory
 COPY . .
-RUN npm install
-# RUN npm run build
-# RUN npm install react-scripts@latest
-
-# production stage
-# FROM nginx:1.17-alpine as production-stage
-# COPY --from=build-stage /app/build /usr/share/nginx/html
-# CMD ["nginx", "-g", "daemon off;"]
-
-CMD ["npm", "start"]
