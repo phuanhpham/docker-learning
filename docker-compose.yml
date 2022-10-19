@@ -3,6 +3,8 @@ version: '3.7'
 services:
   app:
     image: docker-react/react:v1
+    volumes:
+      - ./src:/app/src
     ports:
-      - 5000:80
+      - 5000:3000
     restart: unless-stopped
