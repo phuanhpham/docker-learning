@@ -1,11 +1,14 @@
-# Set master image
-FROM php:7.2-fpm-alpine
+FROM node:13-alpine
 
-# Set working directory
-WORKDIR /var/www/html
+WORKDIR /app
 
-# Install PHP Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Copy existing application directory
 COPY . .
+
+RUN npm install
+
+# Development
+# CMD ["npm", "run", "dev"]
+
+# Production
+RUN npm install -g pm2
+CMD ["pm2-runtime", "ecosystem.config.js", "--env", "production"]
