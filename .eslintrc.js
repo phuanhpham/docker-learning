@@ -1,10 +1,10 @@
 module.exports = {
   env: {
-    commonjs: true,
-    es6: true,
-    node: true
+    browser: true,
+    es6: true
   },
   extends: [
+    'plugin:vue/essential',
     'standard'
   ],
   globals: {
@@ -12,8 +12,12 @@ module.exports = {
     SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 2018,
+    sourceType: 'module'
   },
+  plugins: [
+    'vue'
+  ],
   rules: {
   }
 }
